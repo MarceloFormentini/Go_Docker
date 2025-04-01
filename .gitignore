@@ -1,0 +1,26 @@
+# Diretórios e arquivos gerados pelo Go
+/bin/
+/pkg/
+/vendor/
+*.exe
+*.out
+
+# Arquivos de configuração do editor
+.vscode/
+.idea/
+*.swp
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.bak
+*.old
+
+# Arquivos gerados pelo Docker
+docker-compose.override.yml
+.env
+.env.*
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db

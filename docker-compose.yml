@@ -1,0 +1,25 @@
+# este arquivo permite gerenciar vários contêiner ao mesmo tempo
+services:
+  app:
+    build: . # indica que o Dockerfile esta na pasta raiz
+    ports:
+      - "9090:8080" # Porta no host (máquina local) : porta do contêiner
+    volumes:
+      - .:/app # todos os arquivos da raiz vão para a pasta app dentro da aplicação
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db_imersao_full_cycle
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/create_products_table.sql
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
